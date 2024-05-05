@@ -15,7 +15,7 @@
 }
 
 body {
-    background-color: #181533
+    background-color: #181533;
 }
 
 /* Header Styles */
@@ -45,6 +45,78 @@ header div h1 {
     font-weight: 800;
 }
 
+/* Form Div Styles */
+#form-container {
+    width: 100vw;
+    padding: 0px 10px;
+}
+
+.form-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0px 10px;
+    margin-top: 100px;
+}
+
+.form-div form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #191d24;
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: 2px solid #2A303C;
+}
+
+.form-div form input {
+    width: 100%;
+    background-color: #191d24;
+    color: #a6adbb;
+    border: 2px solid #2A303C;
+    border-radius: 5px;
+    padding: 10px 0px;
+    margin-right: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    height: 40px;
+}
+
+.form-div form input:focus {
+    outline: none;
+}
+
+.form-div form button {
+    background-color: #242535d9;
+    border: 2px solid #2A303C;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    height: 40px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-div form button:hover {
+    background-color: #181922;
+}
+
+.form-div form button svg {
+    fill: #a6adbb;
+    height: 20px;
+}
+
+
+
 /* Upper Container Styles */
 .upper-container {
     display: flex;
@@ -52,6 +124,8 @@ header div h1 {
     margin-top: 20px;
     align-items: center;
     height: 40px;
+    width: 100vw;
+    padding: 0px 10px;
 }
 
 .upper-container select {
@@ -63,7 +137,7 @@ header div h1 {
     margin: 0 10px;
     font-weight: 600;
     cursor: pointer;
-    width: clamp(200px, 50%, 300px);
+    width: 100%;
     text-align: center;
     font-size: 12px;
 }
@@ -78,14 +152,20 @@ header div h1 {
     font-weight: 600;
 }
 
+.refresh-div {
+    width: 10%;
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .refresh-btn {
     height: 40px;
     width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    right: 20px;
     background-color: #242535d9;
     border-radius: 50%;
     cursor: pointer;
@@ -109,6 +189,19 @@ header div h1 {
     padding: 20px;
     width: 100%;
 }
+
+#showcase-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+.loading {
+    display: block;
+    margin: auto;
+}
+
 
 
 
@@ -180,7 +273,10 @@ header div h1 {
 }
 
 .details-div .title {
+    display: block;
     font-weight: 600;
+    max-width: 124px;
+    overflow: hidden;
 }
 
 .details-div .stars,

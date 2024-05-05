@@ -1,5 +1,22 @@
-const GITHUB_USERNAME = 'TechShreyash'
+const GITHUB_USERNAME = new URLSearchParams(window.location.search).get('user')
+
+
+
+const formContainer = document.getElementById('form-container');
+const showcaseContainer = document.getElementById('showcase-container');
 const refreshButton = document.getElementById('refresh-button');
+const cardContainer = document.getElementById('card-container');
+const loadImg = document.getElementById('load-img');
+
+if (!GITHUB_USERNAME) {
+    formContainer.style.display = 'block';
+    showcaseContainer.style.display = 'none';
+}
+else {
+    formContainer.style.display = 'none';
+    showcaseContainer.style.display = 'block';
+    LoadData();
+}
 
 async function getTopStarredRepositories(username, max = 10) {
     const url = `https://api.github.com/users/${username}/repos`;
@@ -18,5 +35,18 @@ async function getTopStarredRepositories(username, max = 10) {
 }
 
 async function LoadData() {
+    console.log('Loading Data', GITHUB_USERNAME);
+    loadImg.style.display = 'block';
+    const repos = await getTopStarredRepositories(GITHUB_USERNAME);
+    console.log(repos);
+    
+    for (const repo of repos) {
+        const name = repo.name;
+        const description = repo.description || '';
+        const stars = repo.stargazers_count;
+        const forks = repo.forks_count;
+        console.log(name, description, stars, forks);
+    }
+
 
 }
