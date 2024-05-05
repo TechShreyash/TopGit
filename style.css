@@ -1,0 +1,220 @@
+/* Poppins Font: CSS classes */
+:root {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+body {
+    background-color: #181533
+}
+
+/* Header Styles */
+
+header {
+    background-color: #1F1B3B;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 5px 10px #1F1B3B;
+    border-bottom: 3px solid #2A303C;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 8px 20px;
+}
+
+header div img {
+    height: 100%;
+}
+
+header div h1 {
+    color: #fff;
+    margin-left: 20px;
+    font-weight: 800;
+}
+
+/* Upper Container Styles */
+.upper-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    height: 40px;
+}
+
+.upper-container select {
+    background-color: #191d24;
+    color: #a6adbb;
+    border: 2px solid #2A303C;
+    border-radius: 5px;
+    padding: 10px 0px;
+    margin: 0 10px;
+    font-weight: 600;
+    cursor: pointer;
+    width: clamp(200px, 50%, 300px);
+    text-align: center;
+    font-size: 12px;
+}
+
+.upper-container select:focus {
+    outline: none;
+}
+
+.upper-container select option {
+    background-color: #191d24;
+    color: #a6adbb;
+    font-weight: 600;
+}
+
+.refresh-btn {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 20px;
+    background-color: #242535d9;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid white;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+    transform: scale(1.1);
+}
+
+.refresh-btn svg {
+    fill: #fff
+}
+
+/* Container styles */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+
+
+.card {
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    border: 5px solid #2A303C;
+    position: relative;
+}
+
+.card:hover .image-div {
+    transform: scale(1.1);
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover .details-div {
+    bottom: 0;
+}
+
+
+.image-div {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 0.5s ease;
+}
+
+.details-div {
+    position: absolute;
+    bottom: -40px;
+    background-color: rgba(36, 37, 53, 0.85);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px 40px;
+    width: 100%;
+    color: #fff;
+    height: 80px;
+    border-top: 5px solid #2A303C;
+    transition: all 0.5s ease;
+    padding: 0px 10px;
+}
+
+.details-div div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.details-div p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.details-div .details {
+    font-size: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.details-div .title {
+    font-weight: 600;
+}
+
+.details-div .stars,
+.details-div .forks {
+    font-weight: 400;
+}
+
+.details-div .stars svg,
+.details-div .forks svg {
+    fill: #fff;
+    margin-right: 5px;
+}
+
+.details-div .forks svg {
+    stroke: #fff;
+}
+
+
+@media screen and (max-width: 360px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .details-div svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .details-div p {
+        font-size: 12px;
+    }
+
+    .details-div .details {
+        font-size: 12px;
+    }
+}
