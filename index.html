@@ -6,8 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TopGit - View Your Top Github Repositories</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <meta name="description" content="TopGit helps you discover the best and top-starred repositories on Github. Find popular repositories based on stars, forks, or a combination of both.">
+    <meta name="keywords" content="Github, Repositories, Top Repositories, Most Starred Repositories, Most Forked Repositories">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="TopGit - View Your Top Github Repositories">
+    <meta property="og:description" content="TopGit helps you discover the best and top-starred repositories on Github.">
+    <meta property="og:url" content="YOUR_WEBSITE_URL">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="YOUR_IMAGE_URL">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="TopGit - View Your Top Github Repositories">
+    <meta name="twitter:description" content="TopGit helps you discover the best and top-starred repositories on Github.">
+    <meta name="twitter:image" content="YOUR_IMAGE_URL">
 
+    <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
@@ -18,15 +30,18 @@
 
     <header>
         <div>
-            <img src="./assets/logo-100.png" alt="">
-            <h1>TopGit</h1>
+            <a href="/">
+                <img src="./assets/logo-100.png" alt="">
+                <h1>TopGit</h1>
+            </a>
         </div>
     </header>
+    <img id="load-img1" class="loading" src="./assets/loading.gif" alt="Loading...">
 
-    <section id="form-container">
+    <section id="form-container" style="display: none;">
         <div class="form-div">
             <form action="/">
-                <input name="user" type="text" placeholder="Github Username">
+                <input name="user" type="text" placeholder="Github Username" required autocomplete="off">
 
                 <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                         <path
@@ -43,57 +58,25 @@
 
     <section id="showcase-container" style="display: none;">
         <div class="upper-container">
-            <select>
+            <select id="top-type">
                 <option value="sum">Most Starred + Forked</option>
-                <option value="starred">Most Starred</option>
-                <option value="forked">Most Forked</option>
+                <option value="stars">Most Starred</option>
+                <option value="forks">Most Forked</option>
             </select>
             <div class="refresh-div">
-                <a id="refresh-btn" class="refresh-btn" onclick="LoadData()"><svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24" width="24" height="24">
+                <a id="refresh-btn" class="refresh-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        width="24" height="24">
                         <path
                             d="M3.38 8A9.502 9.502 0 0 1 12 2.5a9.502 9.502 0 0 1 9.215 7.182.75.75 0 1 0 1.456-.364C21.473 4.539 17.15 1 12 1a10.995 10.995 0 0 0-9.5 5.452V4.75a.75.75 0 0 0-1.5 0V8.5a1 1 0 0 0 1 1h3.75a.75.75 0 0 0 0-1.5H3.38Zm-.595 6.318a.75.75 0 0 0-1.455.364C2.527 19.461 6.85 23 12 23c4.052 0 7.592-2.191 9.5-5.451v1.701a.75.75 0 0 0 1.5 0V15.5a1 1 0 0 0-1-1h-3.75a.75.75 0 0 0 0 1.5h2.37A9.502 9.502 0 0 1 12 21.5c-4.446 0-8.181-3.055-9.215-7.182Z">
                         </path>
                     </svg></a>
             </div>
         </div>
-        <img id="load-img" class="loading" src="./assets/loading.gif" alt="Loading...">
+        <img id="load-img2" class="loading" src="./assets/loading.gif" alt="Loading..." style="display: none;">
 
         <div id="card-container" class="container">
-            <div class="card">
-                <a href="#repo" target="_blank">
-
-                    <div class="image-div"
-                        style="background-image: url(https://socialify.git.ci/TechShreyash/AnimeDex/image?font=Jost&language=1&name=1&pattern=Solid&theme=Light);">
-                    </div>
-                    <div class="details-div">
-                        <div>
-                            <p class="title">1. AnimeDexBetterTFH</p>
-                            <p class="stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                                    height="24">
-                                    <path
-                                        d="m12.672.668 3.059 6.197 6.838.993a.75.75 0 0 1 .416 1.28l-4.948 4.823 1.168 6.812a.75.75 0 0 1-1.088.79L12 18.347l-6.116 3.216a.75.75 0 0 1-1.088-.791l1.168-6.811-4.948-4.823a.749.749 0 0 1 .416-1.279l6.838-.994L11.327.668a.75.75 0 0 1 1.345 0Z">
-                                    </path>
-                                </svg> 100</p>
-                            <p class="forks"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                                    height="24">
-                                    <path
-                                        d="M8.75 19.25a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0ZM15 4.75a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0Zm-12.5 0a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0ZM5.75 6.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 5.75 6.5ZM12 21a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 12 21Zm6.25-14.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 18.25 6.5Z">
-                                    </path>
-                                    <path
-                                        d="M6.5 7.75v1A2.25 2.25 0 0 0 8.75 11h6.5a2.25 2.25 0 0 0 2.25-2.25v-1H19v1a3.75 3.75 0 0 1-3.75 3.75h-6.5A3.75 3.75 0 0 1 5 8.75v-1Z">
-                                    </path>
-                                    <path d="M11.25 16.25v-5h1.5v5h-1.5Z"></path>
-                                </svg>200</p>
-                        </div>
-                        <p class="details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus magni
-                            mollitia
-                            aperiam provident dignissimos fuga velit itaque a at corrupti?</p>
-                    </div>
-                </a>
-            </div>
         </div>
-    </section>
+        <div class="load-more"><a id="load-more-btn">LOAD MORE</a></div>
 
     <script src="./script.js"></script>
 </body>
