@@ -55,7 +55,7 @@ async function getTopRepositories(username, type, max = 10) {
 async function LoadData(isLoadMore = false) {
     let scrollPos = 0;
 
-    if (isLoadMore) {
+    if (isLoadMore === true) {
         if (page > 1) {
             scrollPos = loadMoreBtn.getBoundingClientRect().top + window.scrollY;
         }
