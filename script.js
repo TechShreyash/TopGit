@@ -52,14 +52,14 @@ async function getTopRepositories(username, type, max = 10) {
 }
 
 
-async function LoadData() {
+async function LoadData(isLoadMore = false) {
     let scrollPos = 0;
 
-    if (page > 1) {
-        console.log('page > 1');
-        scrollPos = loadMoreBtn.getBoundingClientRect().top + window.scrollY;
+    if (isLoadMore) {
+        if (page > 1) {
+            scrollPos = loadMoreBtn.getBoundingClientRect().top + window.scrollY;
+        }
     }
-    console.log(scrollPos);
 
     cardContainer.innerHTML = ''
     loadImg2.style.display = 'block';
@@ -104,5 +104,5 @@ refreshBtn.addEventListener('click', LoadData);
 topType.addEventListener('change', LoadData);
 loadMoreBtn.addEventListener('click', function () {
     page++;
-    LoadData();
+    LoadData(true);
 });
