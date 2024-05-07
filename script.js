@@ -7,6 +7,7 @@ const loadImg1 = document.getElementById('load-img1');
 const loadImg2 = document.getElementById('load-img2');
 const topType = document.getElementById('top-type');
 const loadMoreBtn = document.getElementById('load-more-btn');
+const heading = document.getElementById('heading');
 
 const GITHUB_USERNAME = new URLSearchParams(window.location.search).get('user');
 let page = 1;
@@ -71,10 +72,12 @@ async function LoadData(isLoadMore, reload) {
     }
     catch (error) {
         alert(error);
-        return;
+        window.location.href = '/';
     }
 
     let pos = 0;
+    const username = repos[0].owner.login;
+
     for (const repo of repos) {
         pos++;
         const name = repo.name;
@@ -90,6 +93,8 @@ async function LoadData(isLoadMore, reload) {
 
         cardContainer.innerHTML += CARD_TEMPLATE.replace('REPO_URL', url).replace('IMAGE_URL', image).replace('TITLE', title).replace('STARS', stars).replace('FORKS', forks).replace('DESCRIPTION', description);
     }
+
+    heading.innerHTML = `TopGit - ${username}`
 
     loadImg2.style.display = 'none';
     loadMoreBtn.style.display = 'flex';
