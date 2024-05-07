@@ -12,21 +12,20 @@ const GITHUB_USERNAME = new URLSearchParams(window.location.search).get('user');
 let page = 1;
 
 loadImg1.style.display = 'none';
-if (!GITHUB_USERNAME) {
-    formContainer.style.display = 'block';
-    showcaseContainer.style.display = 'none';
-}
-else {
-    formContainer.style.display = 'none';
-    showcaseContainer.style.display = 'block';
-    LoadData();
-}
 
 
-async function getTopRepositories(username, type, max = 10) {
+async function getTopRepositories(username, type, max = 10, reload = false) {
     await new Promise(resolve => setTimeout(resolve, 500));
     const url = `https://api.github.com/users/${username}/repos`;
-    const response = await fetch(url, { cache: "no-store" });
+    let response
+
+    if (reload === true) {
+        const timestamp = new Date().getTime()
+        response = await fetch(url + '?' + timestamp);
+    }
+    else {
+        response = await fetch(url);
+    }
     const repos = await response.json();
 
     if (!response.ok) {
@@ -52,7 +51,7 @@ async function getTopRepositories(username, type, max = 10) {
 }
 
 
-async function LoadData(isLoadMore = false) {
+async function LoadData(isLoadMore, reload) {
     let scrollPos = 0;
 
     if (isLoadMore === true) {
@@ -68,7 +67,7 @@ async function LoadData(isLoadMore = false) {
     const type = topType.value;
     let repos = [];
     try {
-        repos = await getTopRepositories(GITHUB_USERNAME, type, page * 10);
+        repos = await getTopRepositories(GITHUB_USERNAME, type, page * 10, reload = reload);
     }
     catch (error) {
         alert(error);
@@ -100,9 +99,18 @@ async function LoadData(isLoadMore = false) {
     });
 }
 
-refreshBtn.addEventListener('click', LoadData);
-topType.addEventListener('change', LoadData);
-loadMoreBtn.addEventListener('click', function () {
-    page++;
-    LoadData(true);
-});
+if (!GITHUB_USERNAME) {
+    formContainer.style.display = 'block';
+    showcaseContainer.style.display = 'none';
+}
+else {
+    formContainer.style.display = 'none';
+    showcaseContainer.style.display = 'block';
+    LoadData(isLoadMore = false, reload = true);
+    refreshBtn.addEventListener('click', function () { LoadData(isLoadMore = false, reload = true) });
+    topType.addEventListener('change', function () { LoadData(isLoadMore = false, reload = false) });
+    loadMoreBtn.addEventListener('click', function () {
+        page++;
+        LoadData(isLoadMore = true, reload = false);
+    });
+}
