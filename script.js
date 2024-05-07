@@ -16,12 +16,12 @@ loadImg1.style.display = 'none';
 
 async function getTopRepositories(username, type, max = 10, reload = false) {
     await new Promise(resolve => setTimeout(resolve, 500));
-    const url = `https://api.github.com/users/${username}/repos`;
+    const url = `https://api.github.com/users/${username}/repos?type=owner&per_page=100&sort=updated`;
     let response
 
     if (reload === true) {
         const timestamp = new Date().getTime()
-        response = await fetch(url + '?' + timestamp);
+        response = await fetch(url + '&t=' + timestamp);
     }
     else {
         response = await fetch(url);
