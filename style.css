@@ -54,6 +54,7 @@ header div h1 {
 }
 
 /* Form Div Styles */
+
 #form-container {
     width: 100%;
     padding: 0px 10px;
@@ -123,6 +124,56 @@ header div h1 {
     height: 20px;
 }
 
+
+/* Info Container Styles */
+
+.info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0px 10px;
+    margin-top: 60px;
+}
+
+.info-container div {
+    width: 100%;
+    padding: 20px;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    color: #fff;
+    max-width: 800px;
+}
+
+.info-container h1 {
+    text-align: center;
+    color: #FFD700;
+}
+
+.info-container h2 {
+    color: #FFD700;
+    margin-top: 20px;
+}
+
+.info-container a {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+.info-container a:hover {
+    text-decoration: underline;
+}
+
+.info-container ul,
+ol {
+    margin-left: 20px;
+}
+
+.info-container li {
+    margin-bottom: 10px;
+}
 
 
 /* Upper Container Styles */
