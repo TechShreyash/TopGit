@@ -420,3 +420,11 @@ ol {
         font-size: 12px;
     }
 }
+
+.page-views{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 50px;
+}
