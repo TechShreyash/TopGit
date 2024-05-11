@@ -6,6 +6,8 @@
 
 Discover the Best of GitHub with TopGit! Explore, analyze, and share the top repositories on GitHub with ease. Whether you want to showcase your best projects or find inspiration from others, TopGit makes it simple and fun.
 
+<img src="https://stats.techzbots.co/api/views_badge?page=https%3A%2F%2Fgithub.com%2FTechShreyash%2FTopGit&color1=e4214c&color2=40ba49&label=Total%20Repo%20Views" alt="Total Repo Views">
+
 ## What Can You Do with TopGit?
 
 - ⭐ **View Your Top Repositories:** Discover your most starred and most forked projects.
